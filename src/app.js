@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const ProductManager = require('./ProductManager'); // Asegúrate de que la ruta sea correcta
+const ProductManager = require('./ProductManager');
 
-const productManager = new ProductManager('products.json'); // Asegúrate de que el archivo 'products.json' exista
+const productManager = new ProductManager('products.json');
 
 app.use(express.json());
 
