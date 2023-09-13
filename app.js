@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
-const ProductManager = require('./ProductManager');
+const ProductManager = require('./src/ProductManager');
+const CartManager = require('./src/CartManager');
+const productRoutes = require('./src/productRoutes');
 
 const productManager = new ProductManager('products.json');
+const cartManager = new CartManager('carts.json');
 
 app.use(express.json());
+
+app.use('/api/products', productRoutes);
 
 // Endpoint para obtener productos
 app.get('/products', async (req, res) => {
@@ -41,7 +46,7 @@ app.get('/products/:pid', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
